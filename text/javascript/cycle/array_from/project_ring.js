@@ -2,7 +2,7 @@
 import {to_xy} from '../../f/i.js';
 import {main} from '../../state/i.js';
 
-import {PI_180,PI_4,_180_PI} from '../../conf.js';
+import {PI_180_2,PI_4,_180_PI} from '../../conf.js';
 
 export default (
     (a) => {
@@ -13,9 +13,11 @@ export default (
                 a[1],
                 main.maxLat,
                 main.mMaxLat,
-                PI_180,
+                PI_180_2,
                 PI_4,
                 _180_PI,
+                main.maxLatMore,
+                main.maxLatLess,
             )
         )
     }

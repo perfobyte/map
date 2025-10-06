@@ -1,10 +1,10 @@
 
 
 export default (
-  (gl,project_ring_af,projected_af,poly_af,mpol_bbox_af,EA) => {
+  (gl,projected_af,poly_af,mpol_bbox_af,features_af,compute_bbox) => {
     var
       i = 0,
-      features = gj.features,
+      features = gl.features,
       f = null,
       l = features.length,
       geom=null,
@@ -12,27 +12,7 @@ export default (
       projected = null,
       polyRings = null,
 
-      v=Array.from(
-        features,
-        (f) => {
-          var
-            k = geom=f.geometry.type
-          ;
-
-          return {
-            k:(
-              (k==='Polygon')
-              ? 0
-              :
-              (k==='MultiPolygon')
-              ? 1
-              : 2
-            ),
-            projected:EA,
-            bboxes:EA
-          }
-        }
-      ),
+      v=Array.from(features,features_af),//TODO:
       _ = null
     ;
     
@@ -49,6 +29,6 @@ export default (
         _.bboxes = Array.from(projected, mpol_bbox_af);
       }
     }
-    return undefined;
+    return v;
   }
 );

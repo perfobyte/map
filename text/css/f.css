@@ -1,0 +1,23 @@
+.bti {
+    color:gray;
+    width:40px;
+    height:40px;
+    border-radius:100%;
+    background:rgba(255, 255, 255, 0.6);
+
+    &:hover,
+    &:focus-visible {
+        color: var(--inp-fc-c);
+    }
+
+    & > svg {
+        width:20px;
+        height:20px;
+        
+        margin:auto;
+    }
+}
+
+.dn {
+    display:none;
+}

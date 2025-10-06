@@ -1,30 +1,26 @@
 
 export default (
-    (b,lon, lat, maxLat, mMaxLat, PI_180, PI_4, _180_PI) => {
+    (
+        b,
+        lon,
+        lat,
+        maxLat,
+        mMaxLat,
+        PI_180_2,
+        PI_4,
+        _180_PI,
+        maxLatMore,
+        maxLatLess
+    ) => {
         return (
             (b[0] = lon),
             (b[1] = (
-                -(
-                    Math.log(
-                        Math.tan(
-                            PI_4 + (
-                                (
-                                    (
-                                        (lat > maxLat)
-                                        ? maxLat
-                                        :
-                                        (lat < mMaxLat)
-                                        ? mMaxLat
-                                        : lat
-                                    )
-                                )
-                                * PI_180
-                            )
-                            / 2
-                        )
-                    )
-                    * _180_PI
-                )
+                (lat > maxLat)
+                ? maxLatMore
+                :
+                (lat < mMaxLat)
+                ? maxLatLess
+                : -(Math.log(Math.tan(PI_4 + (lat * PI_180_2))) * _180_PI)
             )),
             b
         );

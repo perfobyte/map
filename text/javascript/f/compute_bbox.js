@@ -17,9 +17,16 @@ export default (
             i<l;
             i++
         ){
-            ((p_0=(p=points[i])[0])<minX)&&(minX=p_0);
-            (p_0>maxX)&&(maxX=p_0);
-            ((p_1=p[1])<minY) && (minY=p_1);
+            (
+                (
+                    p_0 = (
+                        p = points[i]
+                    )[0]
+                ) < minX
+            )
+            && (minX = p_0);
+            (p_0>maxX) && (maxX=p_0);
+            ((p_1 = p[1]) < minY) && (minY=p_1);
             (p_1>maxY) && (maxY=p_1);
         }
         b[0]=minX;
