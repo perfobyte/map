@@ -10,7 +10,7 @@ export default (
             w2 = 0,
             h2 = 0,
 
-            scale = main.scale,
+            scale = main.s,
 
             WORLD_W = main.WORLD_W,
             WORLD_H = main.WORLD_H

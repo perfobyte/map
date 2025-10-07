@@ -1,7 +1,6 @@
 import {main} from '../../../state/i.js';
 import {on_window_mmove} from '../move/i.js';
 
-
 export default (
     (e) => {
         return (

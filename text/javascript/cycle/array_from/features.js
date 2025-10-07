@@ -2,9 +2,10 @@ import {EA} from '../../conf.js';
 
 
 export default (
-    (f) => {
+    (e) => {
         var
-            k = f.geometry.type
+            k = e.geometry.type,
+            p = e.properties
         ;
         return {
             k:(
@@ -17,6 +18,9 @@ export default (
             ),
             projected:EA,
             bboxes:EA,
+            n:(p && p.NAME_EN)||"",
+            nx:0,
+            ny:0,
         }
     }
 )

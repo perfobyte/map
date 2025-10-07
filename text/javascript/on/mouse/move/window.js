@@ -10,7 +10,7 @@ export default (
         ;
         return (
             (main.x=(
-                (main.x-(((x=e.clientX)-main.lastX)/(sc=main.scale)))
+                (main.x-(((x=e.clientX)-main.lastX)/(sc=main.s)))
             )),
             (main.y=(
                 (main.y-(((y=e.clientY)-main.lastY)/sc))

@@ -8,10 +8,8 @@ export var
     
     EA = [],
 
-    url = "/f/application/json/country.json",
-
-    STROKE_STYLE = "black",//"#ffffff",
-    BG_STYLE = 'white',//"#0b0e13",
+    MAX_SCALE=4194304,
+    MIN_SCALE=1,
 
     passive_false = {passive:false}
 ;

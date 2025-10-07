@@ -16,3 +16,26 @@
     height:fit-content;
 }
 
+
+#debug_panel {
+    position:fixed;
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+    color:white;
+    right:10px;
+    bottom:10px;
+    width:fit-content;
+    font-size:14px;
+    height:40px;
+    font-family:Arial;
+    padding:0 10px;
+
+    font-weight:400;
+    background-color:rgba(0,0,0,1);
+    &>*{
+        margin-top:10px;
+        line-height:20px;
+        height:20px;
+    }
+}

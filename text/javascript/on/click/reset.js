@@ -7,13 +7,13 @@ export default (
         return (
             (main.x=main.y=0),
             (main.dirty=true),
-            (main.scale=(
-                Math.min(
-                    (canvas.clientWidth / main.WORLD_W),
-                    (canvas.clientHeight / main.WORLD_H)
-                )
+            (main.s=Math.min(
+                (canvas.clientWidth / main.WORLD_W),
+                (canvas.clientHeight / main.WORLD_H)
             ))
         );
     }
 );
+
+
 

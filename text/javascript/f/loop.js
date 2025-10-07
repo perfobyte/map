@@ -1,41 +1,77 @@
-import {main, bf} from '../state/i.js';
-import {canvas,ctx} from '../elems.js';
+import {
+    main,
+    style_color,
+} from '../state/i.js';
+import {
+    canvas,
+    ctx,
+} from '../elems.js';
 import draw from './draw.js';
-import {BG_STYLE, STROKE_STYLE} from '../conf.js';
 import screen_rect from './screen_rect.js';
 import bbox_intersects from './bbox_intersects.js';
+import response_json from './response_json.js';
 
 
 export default (
-    (m,draw,screen_rect,canvas,ctx,BG_STYLE,STROKE_STYLE,) => {
+    (m,draw,screen_rect,canvas,ctx,style_color,response_json) => {
         var
+            controller = new AbortController(),
+            o = {
+                method: "GET",
+                signal: controller.signal,
+            },
+            e = (
+                (e) => {
+                    return (
+                        (e.name === "AbortError")
+                        ||
+                        0//console.error(e)
+                    );
+                }
+            ),
+            F=null,
+            then = (
+                (features) => {
+                    return (
+                        draw(
+                            (features),
+                            canvas,
+                            ctx,
+                            m.width,m.height,m.s,
+                            m.x,m.y, m.w2, m.h2,
+                
+                            style_color,m.lineWidth,
+                        )
+                    );
+                }
+            ),
             a = (n) => {
                 var
                     x = 0,
                     y = 0,
-                    sc = 0
+                    sc = 0,
+                    signal = null
                 ;
                 return (
                     (main.dirty)
                     &&
                     (
-                        draw(
-                            bf.features,
-                            screen_rect(
-                                bf.rect,
-                                (x=m.x),(y=m.y),(sc=m.scale),
-                                m.mw2, m.mh2,
-                                m.w_w2, m.h_h2,
-                            ),
-                            canvas,
-                            ctx,
-                            m.width,m.height,sc,
-                            x,y, m.w2, m.h2,
+                        ((o.signal.aborted) || (controller.abort())),
+                        (o.signal = (controller = new AbortController()).signal),
 
-                            BG_STYLE,STROKE_STYLE,m.lineWidth,bbox_intersects,
-                        ),
-                        (main.dirty=false)
+                        F
+                        ? then(F)
+                        :
+                        fetch(`/_/${m.x}/${m.y}/${m.s}`,o)
+                        .then(response_json)
+                        .then((features)=>{
+                            then(F=features)
+                        })
+                        .catch(e),
+
+                        (main.dirty = false)
                     ),
+
                     requestAnimationFrame(a)
                 );
             }
@@ -48,6 +84,6 @@ export default (
     screen_rect,
     canvas,
     ctx,
-    BG_STYLE,
-    STROKE_STYLE,
+    style_color,
+    response_json
 );

@@ -1,4 +1,5 @@
 import {main} from '../../state/i.js';
+import {MAX_SCALE, MIN_SCALE} from '../../conf.js';
 
 
 export default (
@@ -18,16 +19,23 @@ export default (
             x=main.x,
             y=main.y,
 
-            before_x = ((cx_w2/(sc=main.scale))+x),
+            before_x = ((cx_w2/(sc=main.s))+x),
             before_y = ((cy_h2/sc)+y),
 
-            after_x = ((cx_w2/(main.scale=sc=(
-                sc
-                * (
-                    e.deltaY > 0
-                    ? main.scale_step_back
-                    : main.scale_step
-                )
+            after_x = ((cx_w2/(main.s=sc=(
+                Math.max(
+                    MIN_SCALE,
+                Math.min(
+                    MAX_SCALE,
+                    (
+                        sc
+                        * (
+                            e.deltaY > 0
+                            ? main.scale_step_back
+                            : main.scale_step
+                        )
+                    )
+                ))
             )))+x),
             after_y = ((cy_h2/sc)+y)
         ;

@@ -2,7 +2,7 @@
     color:gray;
     width:40px;
     height:40px;
-    border-radius:100%;
+    border-radius:4px;
     background:rgba(255, 255, 255, 0.6);
 
     &:hover,
@@ -15,6 +15,16 @@
         height:20px;
         
         margin:auto;
+    }
+}
+
+.hideable {
+    opacity:0;
+    pointer-events:none;
+
+    &.a {
+        opacity:1;
+        pointer-events:auto;
     }
 }
 

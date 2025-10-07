@@ -7,3 +7,4 @@ export {default as draw} from './draw.js';
 
 export {default as response_json} from './response_json.js';
 export {default as screen_rect} from "./screen_rect.js";
+export {default as to_zoom} from './to_zoom.js';
